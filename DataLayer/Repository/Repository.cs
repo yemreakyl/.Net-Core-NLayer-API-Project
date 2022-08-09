@@ -70,7 +70,7 @@ namespace DataLayer.Repository
                     products.Add(product);
                 }
                 var chart = new Chart { CustomerId = id[num], Products = products };
-                await _chart.AddAsync(chart);
+                await AddChart(chart);
             }
 
 
