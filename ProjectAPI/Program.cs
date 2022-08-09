@@ -5,7 +5,6 @@ using DataLayer;
 using DataLayer.Repository;
 using DataLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
-using ServiceLayer.Mapping;
 using ServiceLayer.Services;
 using System.Reflection;
 using CoreLayer.Services;
@@ -26,7 +25,7 @@ builder.Services.AddScoped<IService, Service>();
 
 
 
-builder.Services.AddAutoMapper(typeof(MapProfile));
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

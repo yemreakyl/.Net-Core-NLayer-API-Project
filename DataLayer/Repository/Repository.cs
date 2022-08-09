@@ -48,7 +48,7 @@ namespace DataLayer.Repository
             var id = new List<int>();
            
             var random = new Random();
-            int num = random.Next(0, musteriAdet);
+            int num; 
 
             for (int k = 0; k < musteriAdet; k++)
             {
@@ -63,12 +63,13 @@ namespace DataLayer.Repository
             var products = new List<Product>();
             for (int m = 0; m < sepetAdet; m++)
             {
-                for (int k = 0; k < 5; k++)
+                for (int k = 1; k < 6; k++)
                 {
                     var price = random.Next(100, 1000);
-                    var product = new Product { Price = price };
+                    var product = new Product { Price = price};
                     products.Add(product);
                 }
+                num= random.Next(0, musteriAdet);
                 var chart = new Chart { CustomerId = id[num], Products = products };
                 await AddChart(chart);
             }
