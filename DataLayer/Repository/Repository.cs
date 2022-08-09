@@ -72,19 +72,19 @@ namespace DataLayer.Repository
 
                 var response=await AddCustomer(customer);
                 id.Add(response.Id);
-            }
-            
+            }           
             for (int m = 0; m < sepetAdet; m++)
             {
                 var products = GetProducts(5);
                 num = random.Next(0, musteriAdet);
                 var chart = new Chart { CustomerId = id[num], Products = products };
+                foreach(var product in chart.Products)
+                {
+                    product.ChartId=chart.Id;
+                }
                 
                 await AddChart(chart);
             }
-
-
-
         }
 
     }
