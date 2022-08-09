@@ -28,6 +28,19 @@ namespace DataLayer.Repository
             }
             return new String(stringChars);
         }
+        public static List<Product> GetProducts(int num)
+        {
+            var products = new List<Product>();
+
+            for (int k = 0; k < num; k++)
+            {
+                var random = new Random();
+                var price = random.Next(100, 1000);
+                var product = new Product { Price = price };
+                products.Add(product);
+            }
+            return products;
+        }
 
         public async Task AddChart(Chart entity)
         {
@@ -60,17 +73,13 @@ namespace DataLayer.Repository
                 var response=await AddCustomer(customer);
                 id.Add(response.Id);
             }
-            var products = new List<Product>();
+            
             for (int m = 0; m < sepetAdet; m++)
             {
-                for (int k = 1; k < 6; k++)
-                {
-                    var price = random.Next(100, 1000);
-                    var product = new Product { Price = price};
-                    products.Add(product);
-                }
-                num= random.Next(0, musteriAdet);
+                var products = GetProducts(5);
+                num = random.Next(0, musteriAdet);
                 var chart = new Chart { CustomerId = id[num], Products = products };
+                
                 await AddChart(chart);
             }
 
