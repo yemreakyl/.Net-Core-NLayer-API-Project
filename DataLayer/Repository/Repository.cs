@@ -48,7 +48,7 @@ namespace DataLayer.Repository
             var id = new List<int>();
            
             var random = new Random();
-            int num = random.Next(1, musteriAdet);
+            int num = random.Next(0, musteriAdet);
 
             for (int k = 0; k < musteriAdet; k++)
             {
